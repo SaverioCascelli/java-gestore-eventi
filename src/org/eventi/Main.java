@@ -5,11 +5,33 @@ import java.security.InvalidParameterException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+
+        Evento event = new Evento("test", LocalDate.now(), 25);
+
+        Evento event2 = new Evento("test2", LocalDate.now(), 25);
+        Evento event3 = new Evento("test3", LocalDate.parse("2025-12-25"), 25);
+        Evento event4 = new Evento("test4", LocalDate.parse("2025-01-25"), 25);
+        Evento event5 = new Evento("test5", LocalDate.parse("2025-03-25"), 25);
+        Evento event6 = new Evento("test6", LocalDate.parse("2025-02-25"), 25);
+        ProgrammaEventi pe = new ProgrammaEventi("programma1");
+        pe.addEvent(event);
+        pe.addEvent(event2);
+        pe.addEvent(event3);
+
+        pe.addEvent(event4);
+        pe.addEvent(event5);
+        pe.addEvent(event6);
+        System.out.println(pe);
+        System.out.println(pe.searchByDate(LocalDate.parse("2025-02-25")));
+
+        System.out.println(pe.numberOfEvents());
+        pe.sortedList();
+        pe.dupmEvents();
+        System.out.println(pe);
 
         Scanner scan = new Scanner(System.in);
         System.out.println("*****Creazione nuovo evento******");
@@ -47,7 +69,7 @@ public class Main {
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
                 System.out.println("Inserisci l'orario formato HH:mm");
                 LocalTime time = LocalTime.parse(scan.nextLine(), formatter);
-                ev = new Concerto(titolo, d, postiEvento, time, bd);
+                ev = new Concerto(titolo, d, postiEvento, time, bg);
             } else ev = new Evento(titolo, d, postiEvento);
 
             System.out.println("Inserire numero prenotazioni da effettuare, 0 per uscire. Max prenotazioni disponibili " + ev.getPostiDisponibili());
