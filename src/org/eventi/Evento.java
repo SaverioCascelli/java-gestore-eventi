@@ -3,6 +3,7 @@ package org.eventi;
 import java.security.InvalidParameterException;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.Locale;
 
 public class Evento {
     private String titolo;
@@ -46,9 +47,10 @@ public class Evento {
 
     @Override
     public String toString() {
+
         return "Evento{" +
                 "titolo='" + titolo + '\'' +
-                ",.localData=" + data +
+                ",Data=" + data +
                 ", CAPIENZAMASSIMA=" + CAPIENZAMASSIMA +
                 ", postiPrenotati=" + postiPrenotati +
                 '}';
